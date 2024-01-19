@@ -1,10 +1,7 @@
 package com.example.membership.adapter.out.persistence;
 
 import jakarta.persistence.*;
-import lombok.AccessLevel;
-import lombok.Data;
-import lombok.Generated;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Entity
 @Table(name = "membership")
@@ -13,6 +10,7 @@ import lombok.NoArgsConstructor;
 public class MembershipJpaEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Setter(AccessLevel.NONE)
     private Long membershipId;
 
     private String name;
@@ -25,6 +23,15 @@ public class MembershipJpaEntity {
     private boolean isCorp;
 
     public MembershipJpaEntity(String name, String address, String email, boolean isValid, boolean isCorp) {
+        this.name = name;
+        this.address = address;
+        this.email = email;
+        this.isValid = isValid;
+        this.isCorp = isCorp;
+    }
+
+    public MembershipJpaEntity(Long membershipId, String name, String address, String email, boolean isValid, boolean isCorp) {
+        this.membershipId = membershipId;
         this.name = name;
         this.address = address;
         this.email = email;

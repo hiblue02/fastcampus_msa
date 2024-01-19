@@ -4,6 +4,7 @@ import com.example.membership.application.port.in.FindMembershipQuery;
 import com.example.membership.application.port.in.FindMembershipUseCase;
 import com.example.membership.domain.Membership;
 import common.WebAdapter;
+import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,7 +19,7 @@ public class FindMembershipController {
     private final FindMembershipUseCase findMembershipUseCase;
 
     @GetMapping(path = "/membership/{membershipId}")
-    ResponseEntity<Membership> findMembershipByMemberId(@PathVariable Long membershipId) {
+    ResponseEntity<Membership> findMembershipByMemberId(@PathVariable(name = "membershipId") Long membershipId) {
         FindMembershipQuery membershipQuery = FindMembershipQuery.builder()
                 .membershipId(membershipId)
                 .build();
