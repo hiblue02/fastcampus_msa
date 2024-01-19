@@ -3,13 +3,13 @@ package com.example.membership.adapter.in.web;
 import com.example.membership.application.port.in.FindMembershipQuery;
 import com.example.membership.application.port.in.FindMembershipUseCase;
 import com.example.membership.domain.Membership;
-import common.WebAdapter;
-import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
+import com.example.common.WebAdapter;
+
 
 @WebAdapter
 @RestController

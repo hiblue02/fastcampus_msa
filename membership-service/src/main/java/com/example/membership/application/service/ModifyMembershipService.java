@@ -6,7 +6,7 @@ import com.example.membership.application.port.in.ModifyMembershipCommand;
 import com.example.membership.application.port.in.ModifyMembershipUseCase;
 import com.example.membership.application.port.out.ModifyMembershipPort;
 import com.example.membership.domain.Membership;
-import common.UseCase;
+import com.example.common.UseCase;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 

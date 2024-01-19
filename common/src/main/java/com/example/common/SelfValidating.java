@@ -1,7 +1,6 @@
-package common;
+package com.example.common;
 
-
-import jakarta.validation.*;
+import javax.validation.*;
 
 import java.util.Set;
 
