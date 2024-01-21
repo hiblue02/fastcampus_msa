@@ -43,7 +43,7 @@ docker {
     name "${rootProject.name}-${project.name}:${version}"
 
     // DockerFile 경로
-    dockerfile file('./Dockerfile')
+    dockerfile file('../Dockerfile')
 
     // DockerFile에 복사할 파일들
     files bootJarOutput

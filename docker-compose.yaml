@@ -1,0 +1,33 @@
+services:
+  mysql:
+    image: mysql:8.0
+    networks:
+      - pay_network
+    volumes:
+      - ./db/initdb.d:/docker-entrypoint-initdb.d
+    env_file: .env
+    ports:
+      - "3306:3306"
+    environment:
+      - TZ=Asia/Seoul
+      - MYSQL_ROOt_PASSWORD=rootpassword
+      - MYSQL_USER=mysqluser
+      - MYSQL_PASSWORD=mysqlpw
+
+  membership-service:
+    image: msa-membership-service:0.0.1-SNAPSHOT
+    networks:
+      -pay_network:
+    ports:
+      - "8081:8080"
+    depends_on:
+      - mysql
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:mysql://localhost:3306/pay
+      - SPRING_DATASOURCE_USERNAME=mysqluser
+      - SPRING_DATASOURCE_PASSWORD=mysqlpw
+      - SPRING_JPA_PROPERTIES_HIBERNATE_DIALECT=org.hibernate.dialect.MySQL8InnoDBDialect
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+networks:
+  pay_network:
+    dirver: bridge
