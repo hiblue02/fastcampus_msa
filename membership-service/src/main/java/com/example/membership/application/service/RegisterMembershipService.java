@@ -1,11 +1,11 @@
 package com.example.membership.application.service;
 
-import com.example.membership.adapter.out.persistence.MembershipJpaEntity;
 import com.example.membership.adapter.out.persistence.MembershipMapper;
-import com.example.membership.application.port.in.RegisterMembershipCommand;
-import com.example.membership.application.port.in.RegisterMembershipUseCase;
 import com.example.membership.application.port.out.RegisterMembershipPort;
 import com.example.membership.domain.Membership;
+import com.example.membership.adapter.out.persistence.MembershipJpaEntity;
+import com.example.membership.application.port.in.RegisterMembershipCommand;
+import com.example.membership.application.port.in.RegisterMembershipUseCase;
 import com.example.common.UseCase;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;

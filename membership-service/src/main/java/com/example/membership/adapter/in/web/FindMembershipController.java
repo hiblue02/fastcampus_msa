@@ -1,7 +1,7 @@
 package com.example.membership.adapter.in.web;
 
-import com.example.membership.application.port.in.FindMembershipQuery;
 import com.example.membership.application.port.in.FindMembershipUseCase;
+import com.example.membership.application.port.in.FindMembershipQuery;
 import com.example.membership.domain.Membership;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;

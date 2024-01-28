@@ -1,7 +1,7 @@
 package com.example.membership.application.port.out;
 
-import com.example.membership.adapter.out.persistence.MembershipJpaEntity;
 import com.example.membership.domain.Membership;
+import com.example.membership.adapter.out.persistence.MembershipJpaEntity;
 
 public interface ModifyMembershipPort {
     MembershipJpaEntity modifyMembership(

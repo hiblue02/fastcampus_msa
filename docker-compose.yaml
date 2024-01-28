@@ -31,3 +31,22 @@ services:
 networks:
   pay_network:
     dirver: bridge
+
+
+  membership-service:
+    image: msa-money-service:0.0.1-SNAPSHOT
+    networks:
+      -pay_network:
+    ports:
+      - "8081:8080"
+    depends_on:
+      - mysql
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:mysql://localhost:3306/pay
+      - SPRING_DATASOURCE_USERNAME=mysqluser
+      - SPRING_DATASOURCE_PASSWORD=mysqlpw
+      - SPRING_JPA_PROPERTIES_HIBERNATE_DIALECT=org.hibernate.dialect.MySQL8InnoDBDialect
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+  networks:
+    pay_network:
+      dirver: bridge

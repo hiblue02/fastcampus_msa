@@ -1,5 +1,6 @@
-package com.example.membership.adapter.in.web;
+package com.example.money.adapter.in.web;
 
+import com.example.membership.adapter.in.web.RegisterMembershipRequest;
 import com.example.membership.domain.Membership;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.Test;
