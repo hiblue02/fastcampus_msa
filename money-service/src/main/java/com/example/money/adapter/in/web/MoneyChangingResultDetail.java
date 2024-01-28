@@ -1,7 +1,6 @@
 package com.example.money.adapter.in.web;
 
-import com.example.money.domain.constants.ChangingMoneyStatus;
-import com.example.money.domain.constants.ChangingType;
+import com.example.money.domain.MoneyChangingRequest;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -19,12 +18,12 @@ public class MoneyChangingResultDetail {
         INCREASING,
         DECREASING;
 
-        public ChangingType toDomainCode() {
+        public MoneyChangingRequest.ChangingType toDomainCode() {
             if (this.isIncrease()) {
-                return ChangingType.INCREASING;
+                return MoneyChangingRequest.ChangingType.INCREASING;
             }
             if (this.isDecrease()) {
-                return ChangingType.DECREASING;
+                return MoneyChangingRequest.ChangingType.DECREASING;
             }
             throw new IllegalArgumentException();
         }
@@ -37,7 +36,7 @@ public class MoneyChangingResultDetail {
             return this == DECREASING;
         }
 
-        public static MoneyChangingType of(ChangingType domainCode) {
+        public static MoneyChangingType of(MoneyChangingRequest.ChangingType domainCode) {
             if (domainCode.isIncrease()) {
                 return INCREASING;
             }
@@ -61,17 +60,17 @@ public class MoneyChangingResultDetail {
                 return this != SUCCEEDED;
             }
 
-            public ChangingMoneyStatus toDomainCode() {
+            public MoneyChangingRequest.ChangingMoneyStatus toDomainCode() {
                 if (this.isSuccess()) {
-                    return ChangingMoneyStatus.SUCCEEDED;
+                    return MoneyChangingRequest.ChangingMoneyStatus.SUCCEEDED;
                 }
                 if (this.isFail()) {
-                    return ChangingMoneyStatus.FAILED;
+                    return MoneyChangingRequest.ChangingMoneyStatus.FAILED;
                 }
                 throw new IllegalArgumentException();
             }
 
-            public static MoneyChangingResultStatus of(ChangingMoneyStatus domainCode) {
+            public static MoneyChangingResultStatus of(MoneyChangingRequest.ChangingMoneyStatus domainCode) {
                 if (domainCode.isSuccess()) {
                     return SUCCEEDED;
                 }
