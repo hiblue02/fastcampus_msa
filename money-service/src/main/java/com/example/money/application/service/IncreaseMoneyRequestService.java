@@ -103,10 +103,44 @@ public class IncreaseMoneyRequestService implements IncreaseMoneyRequestUseCase 
 
         // 2. Kafka Cluster Produce
         // Task Produce
+        sendRechargingMoneyTaskPort.sendRechargingMoneyTaskPort(task);
+        countDownLatchManager.addCountDownLatch(task.getTaskID());
 
+        // 3. await
+        try {
+            countDownLatchManager.getCountDownLatch(task.getTaskID()).await();
+        } catch (InterruptedException exception) {
+            throw new RuntimeException(exception);
+        }
 
+        // 4. Task Result Consume
+        // 받은 응답을 다시, countDownLatchManager를 통해서 결과 데이터를 받는다.
+        String result = countDownLatchManager.getDataForKey(task.getTaskID());
+        if (result.equals("success")) {
+            // 4-1. consume ok, Logic
+            MemberMoneyJpaEntity memberMoneyJpaEntity = increaseMoneyPort.increaseMoney(
+                    new MemberMoney.MembershipId(command.getTargetMembershipId())
+                    , command.getAmount()
+            );
 
+            if (memberMoneyJpaEntity != null) {
+                return mapper.mapToDomainEntity(
+                        increaseMoneyPort.createMoneyChangingRequest(
+                                new MoneyChangingRequest.TargetMembershipId(command.getTargetMembershipId()),
+                                new MoneyChangingRequest.ChangingTypeCode(MoneyChangingRequest.ChangingType.DECREASING),
+                                new MoneyChangingRequest.ChangingMoneyAmount(command.getAmount()),
+                                new MoneyChangingRequest.ChangingMoneyStatusCode(MoneyChangingRequest.ChangingMoneyStatus.SUCCEEDED),
+                                new MoneyChangingRequest.Uuid(UUID.randomUUID().toString())
+                        )
+                );
+            }
+        } else {
+            // 4-2. Consume fail, Logic
+            return null;
+        }
+        // 5. Consume ok. Logic
         return null;
     }
+
 }
 
