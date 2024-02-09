@@ -1,11 +1,13 @@
 package com.example.remittance.application.port.in;
 
 import com.example.common.SelfValidating;
+import lombok.Builder;
 import lombok.Getter;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
+@Builder
 @Getter
 public class RequestRemittanceCommand extends SelfValidating<RequestRemittanceCommand> {
     @NotNull
