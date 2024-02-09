@@ -13,6 +13,7 @@ repositories {
 
 dependencies {
     implementation project(':membership-service')
+    implementation project(':banking-service')
     implementation project(':common')
 
     testImplementation platform('org.junit:junit-bom:5.9.1')
