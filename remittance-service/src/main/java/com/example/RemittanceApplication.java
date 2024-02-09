@@ -2,10 +2,9 @@ package com.example;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-
 @SpringBootApplication
-public class MoneyApplication {
+public class RemittanceApplication {
     public static void main(String[] args) {
-        SpringApplication.run(MoneyApplication.class);
+        SpringApplication.run(RemittanceApplication.class);
     }
 }
