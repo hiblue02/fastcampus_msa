@@ -11,7 +11,7 @@ public class RemittanceRequest {
     private final String remittanceFromMembershipId;
     private final String toBankName;
     private final String toBankAccountNumber;
-    private final String remittanceType;
+    private final int remittanceType;
     private final int amount;
     private final String remittanceStatus;
 
@@ -27,7 +27,7 @@ public class RemittanceRequest {
     public record ToBankAccountNumber(String toBankAccountNumber) {
     }
 
-    public record RemittanceType(String remittanceType) {}
+    public record RemittanceType(int remittanceType) {}
     public record Amount(int amount) {
     }
 
