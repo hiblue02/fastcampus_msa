@@ -1,4 +1,4 @@
-package com.example.application.port.in;
+package com.example.remittance.application.port.in;
 
 import com.example.common.SelfValidating;
 

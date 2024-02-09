@@ -1,4 +1,4 @@
-package com.example.remittance;
+package com.example.remittance.domain;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;

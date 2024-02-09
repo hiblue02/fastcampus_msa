@@ -1,4 +1,4 @@
-package com.example.application.port.out.membership;
+package com.example.remittance.application.port.out.membership;
 
 public class MembershipStatus {
     private String membershipId;

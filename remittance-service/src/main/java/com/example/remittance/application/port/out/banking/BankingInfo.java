@@ -1,4 +1,4 @@
-package com.example.application.port.out.banking;
+package com.example.remittance.application.port.out.banking;
 
 public class BankingInfo {
     private String bankName;

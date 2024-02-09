@@ -1,6 +1,6 @@
-package com.example.application.port.in;
+package com.example.remittance.application.port.in;
 
-import com.example.remittance.RemittanceRequest;
+import com.example.remittance.domain.RemittanceRequest;
 
 import java.util.List;
 

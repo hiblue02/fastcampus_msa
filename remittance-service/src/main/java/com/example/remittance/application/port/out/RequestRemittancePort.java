@@ -1,4 +1,4 @@
-package com.example.application.port.out;
+package com.example.remittance.application.port.out;
 
 public interface RequestRemittancePort {
 

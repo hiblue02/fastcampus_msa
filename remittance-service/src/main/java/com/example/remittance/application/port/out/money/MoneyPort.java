@@ -1,4 +1,4 @@
-package com.example.application.port.out.money;
+package com.example.remittance.application.port.out.money;
 
 public interface MoneyPort {
     MoneyInfo getMoneyInfo(String membershipId);
