@@ -5,6 +5,10 @@ plugins {
     id("com.palantir.docker") version "0.35.0"
 }
 
+ext{
+    axonVersion = "4.6.0"
+}
+
 group = 'com.example.money'
 version = '0.0.1-SNAPSHOT'
 
@@ -33,6 +37,9 @@ dependencies {
     compileOnly 'javax.servlet:javax.servlet-api:4.0.1'
     implementation project(':common')
     runtimeOnly('com.h2database:h2')
+
+    implementation group: 'org.axonframework', name: 'axon-spring-boot-starter', version: "$axonVersion"
+    implementation group: 'org.axonframework', name: 'axon-configuration', version: "$axonVersion"
 }
 
 test {
