@@ -1,13 +1,13 @@
 package com.example.banking.adapter.out.external.bank;
 
 import com.example.banking.application.port.out.RequestBankAccountPort;
-import com.example.banking.application.port.out.RequestExternalFirmbanking;
+import com.example.banking.application.port.out.RequestExternalFirmbankingPort;
 import com.example.common.ExternalSystemAdapter;
 import lombok.RequiredArgsConstructor;
 
 @ExternalSystemAdapter
 @RequiredArgsConstructor
-public class BankAccountAdapter implements RequestBankAccountPort, RequestExternalFirmbanking {
+public class BankAccountAdapter implements RequestBankAccountPort, RequestExternalFirmbankingPort {
 
     @Override
     public BankAccount getBankAccountInfo(GetBankAccountRequest request) {
