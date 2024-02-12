@@ -4,6 +4,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
 public interface SpringDataRequestFirmbankingRepository extends JpaRepository<RequestFirmbankingJpaEntity, Long> {
-    @Query("SELECT e  FROM FirmbankingRequestJpaEntity e WHERE e.aggregateIdentifier = :aggregateIdentifier OFFSET 1")
+    @Query("SELECT e  FROM RequestFirmbankingJpaEntity e WHERE e.aggregateIdentifier = :aggregateIdentifier limit 1")
     RequestFirmbankingJpaEntity findByAggregateIdentifier(String aggregateIdentifier);
 }

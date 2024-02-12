@@ -3,7 +3,6 @@ package com.example.banking.domain;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.Value;
 
 @Getter
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
@@ -14,6 +13,7 @@ public class RegisteredBankAccount {
     private final String bankName;
     private final String bankAccountNumber;
     private final boolean linkedStatusIsValid;
+    private final String aggregateIdentifier;
 
 
     public static RegisteredBankAccount generateRegsiterBankAccount(
@@ -21,7 +21,8 @@ public class RegisteredBankAccount {
             MembershipId membershipId,
             BankName bankName,
             BankAccountNumber bankAccountNumber,
-            LinkedStatusIsValid linkedStatusIsValid
+            LinkedStatusIsValid linkedStatusIsValid,
+            AggregateIdentifier aggregateIdentifier
 
     ) {
         return new RegisteredBankAccount(
@@ -29,53 +30,31 @@ public class RegisteredBankAccount {
                 membershipId.membershipId,
                 bankName.bankName,
                 bankAccountNumber.bankAccountNumber,
-                linkedStatusIsValid.linkedStatusIsValid
-        );
+                linkedStatusIsValid.linkedStatusIsValid,
+                aggregateIdentifier.aggregateIdentifier
+                );
     }
 
-    @Value
-    public static class RegisterBankAccountId {
-        public RegisterBankAccountId(String value) {
-            this.registerBankAccountId = value;
-        }
-
-        String registerBankAccountId;
+    public record RegisterBankAccountId(String registerBankAccountId) {
     }
 
-    @Value
-    public static class MembershipId {
-        public MembershipId(Long value) {
-            this.membershipId = value;
-        }
-
-        Long membershipId;
+    public record MembershipId(Long membershipId) {
     }
 
-    @Value
-    public static class BankName {
-        public BankName(String value) {
-            this.bankName = value;
-        }
+    public record BankName(String bankName) {
 
-        String bankName;
     }
 
-    @Value
-    public static class BankAccountNumber {
-        public BankAccountNumber(String value) {
-            this.bankAccountNumber = value;
-        }
+    public record BankAccountNumber(String bankAccountNumber) {
 
-        String bankAccountNumber;
     }
 
-    @Value
-    public static class LinkedStatusIsValid {
-        public LinkedStatusIsValid(boolean value) {
-            this.linkedStatusIsValid = value;
-        }
+    public record LinkedStatusIsValid(boolean linkedStatusIsValid) {
 
-        boolean linkedStatusIsValid;
+    }
+
+    public record AggregateIdentifier(String aggregateIdentifier) {
+
     }
 
 }
