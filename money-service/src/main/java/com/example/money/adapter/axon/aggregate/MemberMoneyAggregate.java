@@ -4,7 +4,7 @@ import com.example.money.adapter.axon.command.IncreaseMemberMoneyCommand;
 import com.example.money.adapter.axon.command.MemberMoneyCreatedCommand;
 import com.example.money.adapter.axon.event.IncreaseMemberMoneyEvent;
 import com.example.money.adapter.axon.event.MemberMoneyCreatedEvent;
-import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.axonframework.commandhandling.CommandHandler;
 import org.axonframework.eventsourcing.EventSourcingHandler;
 import org.axonframework.modelling.command.AggregateIdentifier;
@@ -17,7 +17,7 @@ import static org.axonframework.modelling.command.AggregateLifecycle.apply;
 
 
 @Aggregate
-@Data
+@NoArgsConstructor
 public class MemberMoneyAggregate {
     @AggregateIdentifier
     private String id;
@@ -54,6 +54,4 @@ public class MemberMoneyAggregate {
         balance = event.getAmount();
     }
 
-    public MemberMoneyAggregate() {
-    }
 }
