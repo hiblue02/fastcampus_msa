@@ -20,7 +20,8 @@ public class RequestFirmbankingPersistenceAdapter implements RequestFirmbankingP
             RequestFirmbanking.ToBankName toBankName,
             RequestFirmbanking.ToBankAccountNumber toBankAccountNumber,
             RequestFirmbanking.MoneyAmount moneyAmount,
-            RequestFirmbanking.FirmbankingStatus firmbankingStatus
+            RequestFirmbanking.FirmbankingStatus firmbankingStatus,
+            RequestFirmbanking.FirmbankingAggregateIdentifier aggregateIdentifier
     ) {
         return repository.save(
                 new RequestFirmbankingJpaEntity(
@@ -30,7 +31,8 @@ public class RequestFirmbankingPersistenceAdapter implements RequestFirmbankingP
                         toBankAccountNumber.getToBankAccountNumber(),
                         moneyAmount.getMoneyAmount(),
                         firmbankingStatus.getFirmbankingStatus(),
-                        UUID.randomUUID()
+                        UUID.randomUUID(),
+                        aggregateIdentifier.aggregateIdentifier()
                 )
         );
     }
@@ -38,5 +40,10 @@ public class RequestFirmbankingPersistenceAdapter implements RequestFirmbankingP
     @Override
     public RequestFirmbankingJpaEntity modifyFirmbankingRequest(RequestFirmbankingJpaEntity entity) {
         return repository.save(entity);
+    }
+
+    @Override
+    public RequestFirmbankingJpaEntity getFirmbankingRequest(RequestFirmbanking.FirmbankingAggregateIdentifier aggregateIdentifier) {
+        return repository.findByAggregateIdentifier(aggregateIdentifier.aggregateIdentifier());
     }
 }

@@ -1,6 +1,5 @@
 package com.example.money.adapter.axon.event;
 
-import com.example.common.SelfValidating;
 import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -12,14 +11,13 @@ import javax.validation.constraints.NotNull;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @NoArgsConstructor
-public class MemberMoneyCreatedEvent extends SelfValidating<MemberMoneyCreatedEvent> {
+public class MemberMoneyCreatedEvent  {
 
     @NotNull
     private String membershipId;
 
     public MemberMoneyCreatedEvent(@NotNull String membershipID) {
         this.membershipId = membershipID;
-        this.validateSelf();
     }
 
 }

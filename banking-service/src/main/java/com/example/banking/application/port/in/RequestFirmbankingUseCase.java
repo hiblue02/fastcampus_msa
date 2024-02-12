@@ -4,4 +4,5 @@ import com.example.banking.domain.RequestFirmbanking;
 
 public interface RequestFirmbankingUseCase {
     RequestFirmbanking requestFirmbanking(RequestFirmbankingCommand command);
+    void requestFirmbankingByEvent(RequestFirmbankingCommand command);
 }
